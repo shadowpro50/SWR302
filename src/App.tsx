@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import HomePageMember from './pages/HomePageMember';
 import DonorRegistration from './pages/DonorRegistration';
 import AppointmentScheduling from './pages/AppointmentScheduling';
 import BloodInventory from './pages/BloodInventory';
@@ -9,7 +10,7 @@ import DonationCenters from './pages/DonationCenters';
 import EducationalResources from './pages/EducationalResources';
 import UserProfile from './pages/UserProfile';
 import DonationEvents from './pages/DonationEvents';
-import Layout from './components/Layout';
+import StaffLayout from './components/StaffLayout';
 import MemberLayout from './components/MemberLayout';
 import { AppProvider } from './context/AppContext';
 import './App.css';
@@ -20,13 +21,14 @@ function App() {
       <Router>
         <Routes>
           {/* Staff Routes */}
-          <Route path="/admin" element={<Layout><BloodInventory /></Layout>} />
-          <Route path="/admin/emergency" element={<Layout><EmergencyRequests /></Layout>} />
+          <Route path="/admin" element={<StaffLayout><HomePage /></StaffLayout>} />
+          <Route path="/admin/emergency" element={<StaffLayout><EmergencyRequests /></StaffLayout>} />
+          <Route path="/admin/inventory" element={<StaffLayout><BloodInventory /></StaffLayout>} />
           
           {/* Member Routes */}
-          <Route path="/" element={<MemberLayout><DonationEvents /></MemberLayout>} />
+          <Route path="/" element={<MemberLayout><HomePageMember /></MemberLayout>} />
           <Route path="/register" element={<MemberLayout><DonorRegistration /></MemberLayout>} />
-          <Route path="/appointments" element={<MemberLayout><AppointmentScheduling /></MemberLayout>} />
+          <Route path="/appointments" element={<MemberLayout><DonationEvents /></MemberLayout>} />
           <Route path="/centers" element={<MemberLayout><DonationCenters /></MemberLayout>} />
           <Route path="/resources" element={<MemberLayout><EducationalResources /></MemberLayout>} />
           <Route path="/profile" element={<MemberLayout><UserProfile /></MemberLayout>} />
