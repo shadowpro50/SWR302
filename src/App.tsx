@@ -9,6 +9,7 @@ import DonationCenters from './pages/DonationCenters';
 import EducationalResources from './pages/EducationalResources';
 import UserProfile from './pages/UserProfile';
 import Layout from './components/Layout';
+import MemberLayout from './components/MemberLayout';
 import { AppProvider } from './context/AppContext';
 import './App.css';
 
@@ -16,18 +17,19 @@ function App() {
   return (
     <AppProvider>
       <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/register" element={<DonorRegistration />} />
-            <Route path="/appointments" element={<AppointmentScheduling />} />
-            <Route path="/inventory" element={<BloodInventory />} />
-            <Route path="/emergency" element={<EmergencyRequests />} />
-            <Route path="/centers" element={<DonationCenters />} />
-            <Route path="/resources" element={<EducationalResources />} />
-            <Route path="/profile" element={<UserProfile />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          {/* Staff Routes */}
+          <Route path="/admin" element={<Layout><BloodInventory /></Layout>} />
+          <Route path="/admin/emergency" element={<Layout><EmergencyRequests /></Layout>} />
+          
+          {/* Member Routes */}
+          <Route path="/" element={<MemberLayout><HomePage /></MemberLayout>} />
+          <Route path="/register" element={<MemberLayout><DonorRegistration /></MemberLayout>} />
+          <Route path="/appointments" element={<MemberLayout><AppointmentScheduling /></MemberLayout>} />
+          <Route path="/centers" element={<MemberLayout><DonationCenters /></MemberLayout>} />
+          <Route path="/resources" element={<MemberLayout><EducationalResources /></MemberLayout>} />
+          <Route path="/profile" element={<MemberLayout><UserProfile /></MemberLayout>} />
+        </Routes>
       </Router>
     </AppProvider>
   );
