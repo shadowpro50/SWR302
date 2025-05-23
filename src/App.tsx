@@ -8,6 +8,7 @@ import EmergencyRequests from './pages/EmergencyRequests';
 import DonationCenters from './pages/DonationCenters';
 import EducationalResources from './pages/EducationalResources';
 import UserProfile from './pages/UserProfile';
+import DonationEvents from './pages/DonationEvents';
 import Layout from './components/Layout';
 import MemberLayout from './components/MemberLayout';
 import { AppProvider } from './context/AppContext';
@@ -23,7 +24,7 @@ function App() {
           <Route path="/admin/emergency" element={<Layout><EmergencyRequests /></Layout>} />
           
           {/* Member Routes */}
-          <Route path="/" element={<MemberLayout><HomePage /></MemberLayout>} />
+          <Route path="/" element={<MemberLayout><DonationEvents /></MemberLayout>} />
           <Route path="/register" element={<MemberLayout><DonorRegistration /></MemberLayout>} />
           <Route path="/appointments" element={<MemberLayout><AppointmentScheduling /></MemberLayout>} />
           <Route path="/centers" element={<MemberLayout><DonationCenters /></MemberLayout>} />
