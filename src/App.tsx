@@ -9,7 +9,7 @@ import DonationCenters from './pages/DonationCenters';
 import EducationalResources from './pages/EducationalResources';
 import UserProfile from './pages/UserProfile';
 import DonationEvents from './pages/DonationEvents';
-import Layout from './components/Layout';
+import StaffLayout from './components/StaffLayout';
 import MemberLayout from './components/MemberLayout';
 import { AppProvider } from './context/AppContext';
 import './App.css';
@@ -20,8 +20,8 @@ function App() {
       <Router>
         <Routes>
           {/* Staff Routes */}
-          <Route path="/admin" element={<Layout><BloodInventory /></Layout>} />
-          <Route path="/admin/emergency" element={<Layout><EmergencyRequests /></Layout>} />
+          <Route path="/admin" element={<StaffLayout><BloodInventory /></StaffLayout>} />
+          <Route path="/admin/emergency" element={<StaffLayout><EmergencyRequests /></StaffLayout>} />
           
           {/* Member Routes */}
           <Route path="/" element={<MemberLayout><DonationEvents /></MemberLayout>} />
